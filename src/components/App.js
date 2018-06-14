@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
-import StopwatchList from './stopwatch';
+import './styles/App.css';
+import StopwatchList from './stopwatchList';
 import {connect} from 'react-redux';
 
 
 export class App extends React.Component {
+
+
   
   render() {
     return (

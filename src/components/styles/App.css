@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  border: 1px solid black;
+  max-width: 250px;
+  margin: auto;
+  margin-top: 100px;
+  background-color: rgba(128, 128, 128, 0.822);  
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  
+}
+
+.buttons {
+  width: 70px;
+  height: 40px;
+  /* background-color: grey; */
+}
+
+
+
+
+
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
