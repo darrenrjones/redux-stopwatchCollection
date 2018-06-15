@@ -7,9 +7,9 @@ import { addStopwatch, startTime, toggleStatus } from '../actions';
 
 export class StopwatchList extends React.Component {
 
-  startTime(){
-    this.props.dispatch(toggleStatus()); 
-    setTimeout(() => this.runTime(),200);   
+  async startTime() {
+    await this.props.dispatch(toggleStatus()); 
+    this.runTime();   
   }
   runTime(){
     if(this.props.status === true){      
