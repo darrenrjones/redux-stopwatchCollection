@@ -1,4 +1,4 @@
-import { ADD_STOPWATCH, START_TIME, STOP_TIME } from '../actions';
+import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS } from '../actions';
 
 const initialState = {
   list: [],
@@ -9,10 +9,9 @@ const initialState = {
 export default function reducer(state=initialState, action) {
 
   if (action.type === START_TIME){
-    console.log('timer started');
+    console.log('timer ticked');
     return {
       ...state,
-      status: true,
       time: state.time + 1
     }
   }
@@ -20,11 +19,11 @@ export default function reducer(state=initialState, action) {
     console.log('added stopwatch');    
     return null;
   } 
-  if (action.type === STOP_TIME){
-    console.log('timer STOPPED');
+  if (action.type === TOGGLE_STATUS){
+    console.log('status toggled : ', !state.status);
     return {
       ...state,
-      status: false
+      status: !state.status
     }
   }
 

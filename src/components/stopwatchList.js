@@ -1,23 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import StopwatchItem from './stopwatchItem';
-import { addStopwatch, startTime, stopTime } from '../actions';
+import { addStopwatch, startTime, toggleStatus } from '../actions';
 
 
 
 export class StopwatchList extends React.Component {
 
   startTime(){
-
-    setInterval(() => {      
-      this.props.dispatch(startTime()); 
-    }, 1000)
-    
+    this.props.dispatch(toggleStatus()); 
+    setTimeout(() => this.runTime(),200);   
   }
-
+  runTime(){
+    if(this.props.status === true){      
+      setTimeout(() => {  
+        this.props.dispatch(startTime());
+        this.runTime();
+      }, 1000);
+    }
+  }
   stopTime(){
-    this.props.dispatch(stopTime());
+    this.props.dispatch(toggleStatus());
   }
+
   addStopwatch(){
     this.props.dispatch(addStopwatch());
   }
@@ -29,7 +34,8 @@ export class StopwatchList extends React.Component {
         <button onClick={() => this.addStopwatch()}>Create Stopwatch</button>
         <StopwatchItem 
         startTime={() => this.startTime()}
-        stopTime={() => this.stopTime()}        
+        stopTime={() => this.stopTime()}
+        status={this.props.status}        
         />
       </div>
     );

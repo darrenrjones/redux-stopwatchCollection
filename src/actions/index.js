@@ -8,7 +8,7 @@ export const startTime = () => ({
     type: START_TIME,   
 });
 
-export const STOP_TIME = 'STOP_TIME';
-export const stopTime = () => ({
-    type: STOP_TIME,   
+export const TOGGLE_STATUS = 'TOGGLE_STATUS';
+export const toggleStatus = () => ({
+    type: TOGGLE_STATUS,   
 });

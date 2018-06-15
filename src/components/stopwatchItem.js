@@ -11,7 +11,6 @@ export class StopwatchItem extends React.Component {
 
   getMinutes = () => {
     let min = Math.floor(this.props.time / 60) % 60
-    console.log(min);
     if(min.toString().length < 2){
       return '0' + min;
     } else {
@@ -32,10 +31,10 @@ export class StopwatchItem extends React.Component {
         <h1 className="title">Stopwatch</h1>
 
         <h1 id="timerLabel">{this.getHours()}:{this.getMinutes()}:{this.getSeconds()}</h1>
-        <p>{this.props.min}</p>
+        
         <div className="buttoncontainer">
-            <button id="startBtn" className="buttons" onClick={() => this.props.startTime()}>start</button>
-            <button id="stop" className="buttons" onClick={() => this.props.stopTime()}>stop</button>
+            <button disabled={this.props.status} id="startBtn" className="buttons" onClick={() => this.props.startTime()}>start</button>
+            <button disabled={!this.props.status} id="stop" className="buttons" onClick={() => this.props.stopTime()}>stop</button>
             <button id="reset" className="buttons">reset</button>
         </div>
 
@@ -49,8 +48,7 @@ export class StopwatchItem extends React.Component {
 
 const mapStateToProps = state => ({
   time: state.time,
-  min: state.min,
-  hour: state.hour,
+  status: state.status
 });
 
 export default connect(mapStateToProps)(StopwatchItem);
